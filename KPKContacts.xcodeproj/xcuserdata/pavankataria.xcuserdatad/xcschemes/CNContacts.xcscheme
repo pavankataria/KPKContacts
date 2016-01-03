@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0570B97B1C38C0D500A796F4"
-               BuildableName = "CNContacts.app"
-               BlueprintName = "CNContacts"
-               ReferencedContainer = "container:CNContacts.xcodeproj">
+               BuildableName = "KPKContacts.app"
+               BlueprintName = "KPKContacts"
+               ReferencedContainer = "container:KPKContacts.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0570B97B1C38C0D500A796F4"
-            BuildableName = "CNContacts.app"
-            BlueprintName = "CNContacts"
-            ReferencedContainer = "container:CNContacts.xcodeproj">
+            BuildableName = "KPKContacts.app"
+            BlueprintName = "KPKContacts"
+            ReferencedContainer = "container:KPKContacts.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0570B97B1C38C0D500A796F4"
-            BuildableName = "CNContacts.app"
-            BlueprintName = "CNContacts"
-            ReferencedContainer = "container:CNContacts.xcodeproj">
+            BuildableName = "KPKContacts.app"
+            BlueprintName = "KPKContacts"
+            ReferencedContainer = "container:KPKContacts.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0570B97B1C38C0D500A796F4"
-            BuildableName = "CNContacts.app"
-            BlueprintName = "CNContacts"
-            ReferencedContainer = "container:CNContacts.xcodeproj">
+            BuildableName = "KPKContacts.app"
+            BlueprintName = "KPKContacts"
+            ReferencedContainer = "container:KPKContacts.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

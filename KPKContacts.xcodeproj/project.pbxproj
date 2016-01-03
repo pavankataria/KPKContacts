@@ -7,21 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0570B9801C38C0D500A796F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B97F1C38C0D500A796F4 /* AppDelegate.swift */; };
-		0570B9821C38C0D500A796F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B9811C38C0D500A796F4 /* ViewController.swift */; };
-		0570B9851C38C0D500A796F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0570B9831C38C0D500A796F4 /* Main.storyboard */; };
-		0570B9871C38C0D500A796F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0570B9861C38C0D500A796F4 /* Assets.xcassets */; };
-		0570B98A1C38C0D500A796F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0570B9881C38C0D500A796F4 /* LaunchScreen.storyboard */; };
+		0570B9A11C39008900A796F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B9971C39008900A796F4 /* AppDelegate.swift */; };
+		0570B9A21C39008900A796F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0570B9981C39008900A796F4 /* Assets.xcassets */; };
+		0570B9A31C39008900A796F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0570B9991C39008900A796F4 /* LaunchScreen.storyboard */; };
+		0570B9A41C39008900A796F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0570B99B1C39008900A796F4 /* Main.storyboard */; };
+		0570B9A51C39008900A796F4 /* ContactsViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B99D1C39008900A796F4 /* ContactsViewer.swift */; };
+		0570B9A71C39008900A796F4 /* KPKContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B99F1C39008900A796F4 /* KPKContact.swift */; };
+		0570B9A81C39008900A796F4 /* KPKContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B9A01C39008900A796F4 /* KPKContactStore.swift */; };
+		0570B9AC1C39044400A796F4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0570B9AB1C39044400A796F4 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0570B97C1C38C0D500A796F4 /* CNContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CNContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0570B97F1C38C0D500A796F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0570B9811C38C0D500A796F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0570B9841C38C0D500A796F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0570B9861C38C0D500A796F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0570B9891C38C0D500A796F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		0570B98B1C38C0D500A796F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0570B97C1C38C0D500A796F4 /* KPKContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KPKContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0570B9971C39008900A796F4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0570B9981C39008900A796F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0570B99A1C39008900A796F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0570B99C1C39008900A796F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0570B99D1C39008900A796F4 /* ContactsViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewer.swift; sourceTree = "<group>"; };
+		0570B99F1C39008900A796F4 /* KPKContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KPKContact.swift; sourceTree = "<group>"; };
+		0570B9A01C39008900A796F4 /* KPKContactStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KPKContactStore.swift; sourceTree = "<group>"; };
+		0570B9AB1C39044400A796F4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +43,7 @@
 		0570B9731C38C0D500A796F4 = {
 			isa = PBXGroup;
 			children = (
-				0570B97E1C38C0D500A796F4 /* CNContacts */,
+				0570B9961C39008900A796F4 /* KPKContacts */,
 				0570B97D1C38C0D500A796F4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,30 +51,32 @@
 		0570B97D1C38C0D500A796F4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0570B97C1C38C0D500A796F4 /* CNContacts.app */,
+				0570B97C1C38C0D500A796F4 /* KPKContacts.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0570B97E1C38C0D500A796F4 /* CNContacts */ = {
+		0570B9961C39008900A796F4 /* KPKContacts */ = {
 			isa = PBXGroup;
 			children = (
-				0570B97F1C38C0D500A796F4 /* AppDelegate.swift */,
-				0570B9811C38C0D500A796F4 /* ViewController.swift */,
-				0570B9831C38C0D500A796F4 /* Main.storyboard */,
-				0570B9861C38C0D500A796F4 /* Assets.xcassets */,
-				0570B9881C38C0D500A796F4 /* LaunchScreen.storyboard */,
-				0570B98B1C38C0D500A796F4 /* Info.plist */,
+				0570B99B1C39008900A796F4 /* Main.storyboard */,
+				0570B9971C39008900A796F4 /* AppDelegate.swift */,
+				0570B99D1C39008900A796F4 /* ContactsViewer.swift */,
+				0570B9981C39008900A796F4 /* Assets.xcassets */,
+				0570B9991C39008900A796F4 /* LaunchScreen.storyboard */,
+				0570B99F1C39008900A796F4 /* KPKContact.swift */,
+				0570B9A01C39008900A796F4 /* KPKContactStore.swift */,
+				0570B9AB1C39044400A796F4 /* Info.plist */,
 			);
-			path = CNContacts;
+			path = KPKContacts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0570B97B1C38C0D500A796F4 /* CNContacts */ = {
+		0570B97B1C38C0D500A796F4 /* KPKContacts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0570B98E1C38C0D500A796F4 /* Build configuration list for PBXNativeTarget "CNContacts" */;
+			buildConfigurationList = 0570B98E1C38C0D500A796F4 /* Build configuration list for PBXNativeTarget "KPKContacts" */;
 			buildPhases = (
 				0570B9781C38C0D500A796F4 /* Sources */,
 				0570B9791C38C0D500A796F4 /* Frameworks */,
@@ -79,9 +86,9 @@
 			);
 			dependencies = (
 			);
-			name = CNContacts;
+			name = KPKContacts;
 			productName = CNContacts;
-			productReference = 0570B97C1C38C0D500A796F4 /* CNContacts.app */;
+			productReference = 0570B97C1C38C0D500A796F4 /* KPKContacts.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +106,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0570B9771C38C0D500A796F4 /* Build configuration list for PBXProject "CNContacts" */;
+			buildConfigurationList = 0570B9771C38C0D500A796F4 /* Build configuration list for PBXProject "KPKContacts" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -112,7 +119,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0570B97B1C38C0D500A796F4 /* CNContacts */,
+				0570B97B1C38C0D500A796F4 /* KPKContacts */,
 			);
 		};
 /* End PBXProject section */
@@ -122,9 +129,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0570B98A1C38C0D500A796F4 /* LaunchScreen.storyboard in Resources */,
-				0570B9871C38C0D500A796F4 /* Assets.xcassets in Resources */,
-				0570B9851C38C0D500A796F4 /* Main.storyboard in Resources */,
+				0570B9AC1C39044400A796F4 /* Info.plist in Resources */,
+				0570B9A21C39008900A796F4 /* Assets.xcassets in Resources */,
+				0570B9A41C39008900A796F4 /* Main.storyboard in Resources */,
+				0570B9A31C39008900A796F4 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,28 +143,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0570B9821C38C0D500A796F4 /* ViewController.swift in Sources */,
-				0570B9801C38C0D500A796F4 /* AppDelegate.swift in Sources */,
+				0570B9A11C39008900A796F4 /* AppDelegate.swift in Sources */,
+				0570B9A51C39008900A796F4 /* ContactsViewer.swift in Sources */,
+				0570B9A71C39008900A796F4 /* KPKContact.swift in Sources */,
+				0570B9A81C39008900A796F4 /* KPKContactStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0570B9831C38C0D500A796F4 /* Main.storyboard */ = {
+		0570B9991C39008900A796F4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0570B9841C38C0D500A796F4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0570B9881C38C0D500A796F4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0570B9891C38C0D500A796F4 /* Base */,
+				0570B99A1C39008900A796F4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0570B99B1C39008900A796F4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0570B99C1C39008900A796F4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -198,6 +208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = KPKContacts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -237,6 +248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = KPKContacts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -249,10 +261,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = CNContacts/Info.plist;
+				INFOPLIST_FILE = KPKContacts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pavankataria.CNContacts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KPKContacts;
 			};
 			name = Debug;
 		};
@@ -260,17 +273,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = CNContacts/Info.plist;
+				INFOPLIST_FILE = KPKContacts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pavankataria.CNContacts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KPKContacts;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0570B9771C38C0D500A796F4 /* Build configuration list for PBXProject "CNContacts" */ = {
+		0570B9771C38C0D500A796F4 /* Build configuration list for PBXProject "KPKContacts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0570B98C1C38C0D500A796F4 /* Debug */,
@@ -279,13 +293,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0570B98E1C38C0D500A796F4 /* Build configuration list for PBXNativeTarget "CNContacts" */ = {
+		0570B98E1C38C0D500A796F4 /* Build configuration list for PBXNativeTarget "KPKContacts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0570B98F1C38C0D500A796F4 /* Debug */,
 				0570B9901C38C0D500A796F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

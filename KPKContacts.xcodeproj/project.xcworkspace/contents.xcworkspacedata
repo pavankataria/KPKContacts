@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:CNContacts.xcodeproj">
+      location = "self:/Users/pavankataria/WORK/CNContacts/KPKContacts.xcodeproj">
    </FileRef>
 </Workspace>
