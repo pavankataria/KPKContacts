@@ -16,11 +16,11 @@ For now, simply dragging the two source files into your project is all that's re
 ### How to use
 This is the store where you call your methods on
 ```Swift
-    var kpkContactStore = KPKContactStore()
+var kpkContactStore = KPKContactStore()
 ```
 Define and instantiate an empty array to store found contacts in
 ```Swift
-    var contacts = [KPKContact]()
+var contacts = [KPKContact]()
 ```
 Here's how you make a call for contacts retrieval
 
@@ -30,25 +30,26 @@ contacts = self.kpkContactStore.findContactsWithValidNumbersOnly()
 ```
 You can then dispatch the contact search into the background like so where we update a `tableView` once the contacts have been retrieved
 ```Swift
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            if let contacts = self.kpkContactStore.findContactsWithValidNumbersOnly() {
-                self.contacts = contacts
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.tableView.reloadData()
-                }
-            }
-        }
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+  if let contacts = self.kpkContactStore.findContactsWithValidNumbersOnly() {
+    self.contacts = contacts
+    dispatch_async(dispatch_get_main_queue()) {
+      self.tableView.reloadData()
+    }
+  }
+}
 ```
 Here's how you can set a custom regex phone number validator block, you do so by using the helper function:
 ```swift
-private var regexPhoneNumberValidatorBlock: String -> Bool = { value in
-        let PHONE_REGEX = "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
-        let result =  phoneTest.evaluateWithObject(value)
-        return result
-    }
-    // And then you'd make the call to the findContactsWithValidNumbersOnly method
-    contacts = self.kpkContactStore.findContactsWithValidNumbersOnly()
+private var regexPhoneNumberValidatorBlock: String -> Bool = { 
+  value in
+  let PHONE_REGEX = "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$"
+  let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+  let result =  phoneTest.evaluateWithObject(value)
+  return result
+}
+// And then you'd make the call to the findContactsWithValidNumbersOnly method
+contacts = self.kpkContactStore.findContactsWithValidNumbersOnly()
 ```
 
 ### To-dos
