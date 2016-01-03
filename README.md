@@ -8,6 +8,9 @@ Here's what you can do with this package:
   - you can specify your own phone number validator block.
   - A custom `KPKContact` object is returned for every contact found which contain both the original `CNContact` information should you require other details, as well as properties that are exposed for convenience.
 
+### Demo 
+A demo is available which shows a table view contacts viewer displaying all your iOS device's contacts with their phone numbers with writing a few lines of code.
+
 ### Installation
 
 There isn't a cocoapod for this package as of today, didn't have the time to do so just yet. 
