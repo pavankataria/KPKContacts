@@ -12,9 +12,9 @@
 		0570B9A31C39008900A796F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0570B9991C39008900A796F4 /* LaunchScreen.storyboard */; };
 		0570B9A41C39008900A796F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0570B99B1C39008900A796F4 /* Main.storyboard */; };
 		0570B9A51C39008900A796F4 /* ContactsViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B99D1C39008900A796F4 /* ContactsViewer.swift */; };
-		0570B9A71C39008900A796F4 /* KPKContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B99F1C39008900A796F4 /* KPKContact.swift */; };
-		0570B9A81C39008900A796F4 /* KPKContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B9A01C39008900A796F4 /* KPKContactStore.swift */; };
 		0570B9AC1C39044400A796F4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0570B9AB1C39044400A796F4 /* Info.plist */; };
+		0570B9B11C390E7900A796F4 /* KPKContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B9AF1C390E7900A796F4 /* KPKContact.swift */; };
+		0570B9B21C390E7900A796F4 /* KPKContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B9B01C390E7900A796F4 /* KPKContactStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,9 +24,9 @@
 		0570B99A1C39008900A796F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0570B99C1C39008900A796F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0570B99D1C39008900A796F4 /* ContactsViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewer.swift; sourceTree = "<group>"; };
-		0570B99F1C39008900A796F4 /* KPKContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KPKContact.swift; sourceTree = "<group>"; };
-		0570B9A01C39008900A796F4 /* KPKContactStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KPKContactStore.swift; sourceTree = "<group>"; };
 		0570B9AB1C39044400A796F4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0570B9AF1C390E7900A796F4 /* KPKContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KPKContact.swift; sourceTree = "<group>"; };
+		0570B9B01C390E7900A796F4 /* KPKContactStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KPKContactStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,14 +59,22 @@
 		0570B9961C39008900A796F4 /* KPKContacts */ = {
 			isa = PBXGroup;
 			children = (
+				0570B9AE1C390E7900A796F4 /* KPKContacts */,
 				0570B99B1C39008900A796F4 /* Main.storyboard */,
 				0570B9971C39008900A796F4 /* AppDelegate.swift */,
 				0570B99D1C39008900A796F4 /* ContactsViewer.swift */,
 				0570B9981C39008900A796F4 /* Assets.xcassets */,
 				0570B9991C39008900A796F4 /* LaunchScreen.storyboard */,
-				0570B99F1C39008900A796F4 /* KPKContact.swift */,
-				0570B9A01C39008900A796F4 /* KPKContactStore.swift */,
 				0570B9AB1C39044400A796F4 /* Info.plist */,
+			);
+			path = KPKContacts;
+			sourceTree = "<group>";
+		};
+		0570B9AE1C390E7900A796F4 /* KPKContacts */ = {
+			isa = PBXGroup;
+			children = (
+				0570B9AF1C390E7900A796F4 /* KPKContact.swift */,
+				0570B9B01C390E7900A796F4 /* KPKContactStore.swift */,
 			);
 			path = KPKContacts;
 			sourceTree = "<group>";
@@ -145,8 +153,8 @@
 			files = (
 				0570B9A11C39008900A796F4 /* AppDelegate.swift in Sources */,
 				0570B9A51C39008900A796F4 /* ContactsViewer.swift in Sources */,
-				0570B9A71C39008900A796F4 /* KPKContact.swift in Sources */,
-				0570B9A81C39008900A796F4 /* KPKContactStore.swift in Sources */,
+				0570B9B11C390E7900A796F4 /* KPKContact.swift in Sources */,
+				0570B9B21C390E7900A796F4 /* KPKContactStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

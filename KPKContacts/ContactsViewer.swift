@@ -17,7 +17,6 @@ class ContactsViewer: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            
             if let contacts = self.kpkContactStore.findContactsWithValidNumbersOnly() {
                 self.contacts = contacts
                 dispatch_async(dispatch_get_main_queue()) {
@@ -44,8 +43,10 @@ class ContactsViewer: UITableViewController {
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "CELL")
         }
-        cell.textLabel?.text = contacts[indexPath.row].firstName.uppercaseString
-        cell?.detailTextLabel?.text = contacts[indexPath.row].numbers.first?.number
+        
+        let contact: KPKContact = contacts[indexPath.row]
+        cell.textLabel?.text = contact.firstName.uppercaseString
+        cell?.detailTextLabel?.text = contact.numbers.first?.number
         return cell
     }
 }

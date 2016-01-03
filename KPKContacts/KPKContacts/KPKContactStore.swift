@@ -18,7 +18,7 @@ public class KPKContactStore {
     public func setRegexPhoneNumberValidatorBlock(block: String -> Bool){
         regexPhoneNumberValidatorBlock = block
     }
-    var regexPhoneNumberValidatorBlock: String -> Bool = { value in
+    private var regexPhoneNumberValidatorBlock: String -> Bool = { value in
         let PHONE_REGEX = "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
         let result =  phoneTest.evaluateWithObject(value)
