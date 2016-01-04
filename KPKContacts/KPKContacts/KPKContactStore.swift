@@ -10,7 +10,7 @@ import Foundation
 import Contacts
 
 protocol KPKContactStoreProtocol {
-    func findContactsWithValidNumbersOnly() -> [KPKContact]?
+    func findContactsWithValidNumbersOnly(completionHandler complete: [KPKContact]? -> ())
 }
 protocol KPKContactStoreDelegate{
     func kpkContactStore(contactStore: KPKContactStore, contactsAccessAuthorizationStatus status: KPKContactAuthorizationStatus)
@@ -53,28 +53,49 @@ public class KPKContactStore: KPKContactStoreProtocol {
         let result =  phoneTest.evaluateWithObject(value)
         return result
     }
+    /**
+     Creates a process in the background to fetch contacts with valid phone numbers.
+     
+     - parameter completionHandler:      The closure called when the Contact search is complete.
+     */
+    public func findContactsWithValidNumbersOnly(completionHandler complete: [KPKContact]? -> ()) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            func returnContactsOnMainQueue(contacts: [KPKContact]?) {
+                dispatch_async(dispatch_get_main_queue(), { _ in
+                    complete(contacts)
+                })
+            }
+            func notifyDelegateOnMainQueue(status: KPKContactAuthorizationStatus){
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.delegate?.kpkContactStore(self, contactsAccessAuthorizationStatus: status)
+                }
+            }
+            
+            let cnAuthStatus = self.authorizationStatusForAccessingContacts()
+            let authorization = KPKContactAuthorizationStatus(withCNAuthStatus: cnAuthStatus)!
+            notifyDelegateOnMainQueue(authorization)
+            switch authorization {
+                case .Denied, .Restricted:
+                    print("The iOS contacts are not accessible. Register to KPKContact's contactsAccessAuthorizationStatus: delegate method to be notified of the contacts access authorization status and to take appropriate action.")
+                returnContactsOnMainQueue(nil)
+                default: break
+            }
+            
+            let contacts = self.doContactNumberSearch()
+            
+            if contacts.isEmpty {
+                returnContactsOnMainQueue(nil)
+            }
+            return returnContactsOnMainQueue(contacts)
+        }
+    }
     
-    public func findContactsWithValidNumbersOnly() -> [KPKContact]? {
-        let authStatus = authorizationStatusForAccessingContacts()
-        let authorization: KPKContactAuthorizationStatus = KPKContactAuthorizationStatus(withCNAuthStatus: authStatus)!
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            self.delegate?.kpkContactStore(self, contactsAccessAuthorizationStatus: authorization)
-        }
-        
-        switch authorization {
-            case .Denied, .Restricted:
-                print("The iOS contacts are not accessible. Register to KPKContact's contactsAccessAuthorizationStatus: delegate method to be notified of the contacts access authorization status and to take appropriate action.")
-                return nil
-            default: break
-        }
-        
+    private func doContactNumberSearch() -> [KPKContact] {
+        var contacts = [KPKContact]()
         let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactPhoneNumbersKey]
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-        
-        var contacts = [KPKContact]()
         do {
-            try store.enumerateContactsWithFetchRequest(fetchRequest, usingBlock: {
+            try self.store.enumerateContactsWithFetchRequest(fetchRequest, usingBlock: {
                 ( contact, pointer) -> Void in
                 
                 if let numbers = self.findValidPhoneNumbers(contact.phoneNumbers) {
@@ -86,14 +107,9 @@ public class KPKContactStore: KPKContactStoreProtocol {
         }
         catch let error as NSError {
             print(error.localizedDescription)
-            return nil
-        }
-        if contacts.isEmpty {
-            return nil
         }
         return contacts
     }
-    
     private func findValidPhoneNumbers(numbers: [CNLabeledValue]) -> [KPKContactNumberInformation]? {
         // TODO: Use map and reduce function
         if let numbers = getKPKNumbers(numbers) {

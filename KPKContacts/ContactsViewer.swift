@@ -21,12 +21,11 @@ class ContactsViewer: UITableViewController {
     }
     
     func findContacts(){
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            if let contacts = self.kpkContactStore.findContactsWithValidNumbersOnly() {
+        self.kpkContactStore.findContactsWithValidNumbersOnly(){
+            kpkContacts in
+            if let contacts = kpkContacts {
                 self.contacts = contacts
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.tableView.reloadData()
-                }
+                self.tableView.reloadData()
             }
         }
     }

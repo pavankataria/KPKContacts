@@ -1,4 +1,4 @@
-# KPKContacts (v1.1.1)
+# KPKContacts (v1.2.0)
 
 This package was originally created to solve a friend's problem. He found it difficult to access the iOS' contacts telephone numbers.
 
