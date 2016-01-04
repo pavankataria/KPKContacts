@@ -9,15 +9,44 @@
 import Foundation
 import Contacts
 
-
-public class KPKContactStore {
+protocol KPKContactStoreProtocol {
+    func findContactsWithValidNumbersOnly() -> [KPKContact]?
+}
+protocol KPKContactStoreDelegate{
+    func kpkContactStore(contactStore: KPKContactStore, contactsAccessAuthorizationStatus status: KPKContactAuthorizationStatus)
+}
+/*!
+* @abstract The authorization the user has given the application to access an entity type.
+*/
+enum KPKContactAuthorizationStatus: Int{
+    /*! The user has not yet made a choice regarding whether the application may access contact data. */
+    case NotDetermined = 0
+    /*! The application is not authorized to access contact data.
+    *  The user cannot change this application’s status, possibly due to active restrictions such as parental controls being in place. */
+    case Restricted
+    /*! The user explicitly denied access to contact data for the application. */
+    case Denied
+    /*! The application is authorized to access contact data. */
+    case Authorized
     
-    private let store = CNContactStore()
+    init?(withCNAuthStatus status: CNAuthorizationStatus){
+        self.init(rawValue: status.rawValue)
+    }
+}
 
+public class KPKContactStore: KPKContactStoreProtocol {
+    private let store = CNContactStore()
+    var delegate: KPKContactStoreDelegate?
+
+    internal func authorizationStatusForAccessingContacts() -> CNAuthorizationStatus {
+        return CNContactStore.authorizationStatusForEntityType(CNEntityType.Contacts)
+    }
+    
     // You can set your own regex phone number validator block if you prefer to change the default
     public func setRegexPhoneNumberValidatorBlock(block: String -> Bool){
         regexPhoneNumberValidatorBlock = block
     }
+    
     private var regexPhoneNumberValidatorBlock: String -> Bool = { value in
         let PHONE_REGEX = "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
@@ -26,6 +55,20 @@ public class KPKContactStore {
     }
     
     public func findContactsWithValidNumbersOnly() -> [KPKContact]? {
+        let authStatus = authorizationStatusForAccessingContacts()
+        let authorization: KPKContactAuthorizationStatus = KPKContactAuthorizationStatus(withCNAuthStatus: authStatus)!
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            self.delegate?.kpkContactStore(self, contactsAccessAuthorizationStatus: authorization)
+        }
+        
+        switch authorization {
+            case .Denied, .Restricted:
+                print("The iOS contacts are not accessible. Register to KPKContact's contactsAccessAuthorizationStatus: delegate method to be notified of the contacts access authorization status and to take appropriate action.")
+                return nil
+            default: break
+        }
+        
         let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactPhoneNumbersKey]
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
         

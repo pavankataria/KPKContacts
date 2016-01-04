@@ -12,7 +12,6 @@
 		0570B9A31C39008900A796F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0570B9991C39008900A796F4 /* LaunchScreen.storyboard */; };
 		0570B9A41C39008900A796F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0570B99B1C39008900A796F4 /* Main.storyboard */; };
 		0570B9A51C39008900A796F4 /* ContactsViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B99D1C39008900A796F4 /* ContactsViewer.swift */; };
-		0570B9AC1C39044400A796F4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0570B9AB1C39044400A796F4 /* Info.plist */; };
 		0570B9B11C390E7900A796F4 /* KPKContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B9AF1C390E7900A796F4 /* KPKContact.swift */; };
 		0570B9B21C390E7900A796F4 /* KPKContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B9B01C390E7900A796F4 /* KPKContactStore.swift */; };
 /* End PBXBuildFile section */
@@ -137,7 +136,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0570B9AC1C39044400A796F4 /* Info.plist in Resources */,
 				0570B9A21C39008900A796F4 /* Assets.xcassets in Resources */,
 				0570B9A41C39008900A796F4 /* Main.storyboard in Resources */,
 				0570B9A31C39008900A796F4 /* LaunchScreen.storyboard in Resources */,

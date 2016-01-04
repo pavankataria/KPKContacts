@@ -9,6 +9,7 @@
 import Foundation
 import Contacts
 
+
 public struct KPKContact {
     let originalCNContact: CNContact
     let firstName: String

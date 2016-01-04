@@ -16,6 +16,11 @@ class ContactsViewer: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        kpkContactStore.delegate = self
+        findContacts()
+    }
+    
+    func findContacts(){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             if let contacts = self.kpkContactStore.findContactsWithValidNumbersOnly() {
                 self.contacts = contacts
@@ -47,6 +52,35 @@ class ContactsViewer: UITableViewController {
         cell.textLabel?.text = contact.firstName.uppercaseString
         cell?.detailTextLabel?.text = contact.firstNumberAvailable()
         return cell
+    }
+    
+    func displayContactsNotAccessibleAlert(){
+        let alertController = UIAlertController (title: "Contacts Not Enabled", message: "This application needs access to your contacts in order for it to function properly.", preferredStyle: .Alert)
+ 
+        
+        let settingsAction = UIAlertAction(title: "Go to settings and enable?", style: .Default) { (_) in
+            if let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.sharedApplication().openURL(settingsUrl)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Not now.", style: .Default, handler: nil)
+        alertController.addAction(settingsAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil);
+    }
+}
+extension ContactsViewer: KPKContactStoreDelegate {
+    func kpkContactStore(contactStore: KPKContactStore, contactsAccessAuthorizationStatus status: KPKContactAuthorizationStatus) {
+        
+        switch status {
+        case .Denied, .NotDetermined:
+            displayContactsNotAccessibleAlert()
+        default:
+            return
+        }
+        
     }
 }
 
