@@ -32,7 +32,7 @@ If you want to detect if the user has disabled your app access to their Contacts
 ```
 You can then adopt the protocol method that will get called when you initiate a contact search
 ```Swift
-extension ContactsViewer: KPKContactStoreDelegate {
+extension YourClass: KPKContactStoreDelegate {
     func kpkContactStore(contactStore: KPKContactStore, contactsAccessAuthorizationStatus status: KPKContactAuthorizationStatus) {
         switch status {
         case .Denied, .NotDetermined:
