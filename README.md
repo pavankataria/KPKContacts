@@ -28,16 +28,18 @@ Define and instantiate an empty array to store found contacts in
 Here's how you make a call for contacts retrieval. This will use a default regex phone number vaidator block
 
 ```Swift
-    contacts = self.kpkContactStore.findContactsWithValidNumbersOnly()
+    self.kpkContactStore.findContactsWithValidNumbersOnly(){
+        kpkContacts in
+        // set local array to kpkContacts
+}
 ```
-You can then dispatch the contact search into the background like so where we update a `tableView` once the contacts have been retrieved
+You can then process a the contact search. This is done in the background with the completion handler invoked on the main queue. Here's an example of a `tableView` being updated with the contacts retrieved
 ```Swift
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-        if let contacts = self.kpkContactStore.findContactsWithValidNumbersOnly() {
+    self.kpkContactStore.findContactsWithValidNumbersOnly(){
+        kpkContacts in
+        if let contacts = kpkContacts {
             self.contacts = contacts
-            dispatch_async(dispatch_get_main_queue()) {
-                self.tableView.reloadData()
-            }
+            self.tableView.reloadData()
         }
     }
 ```
