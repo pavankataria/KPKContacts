@@ -25,6 +25,25 @@ Define and instantiate an empty array to store found contacts in
 ```Swift
     var contacts = [KPKContact]()
 ```
+
+If you want to detect if the user has disabled your app access to their Contacts you will have to make your class the delegate
+```Swift
+    kpkContactStore.delegate = self
+```
+You can then adopt the protocol method that will get called when you initiate a contact search
+```Swift
+extension ContactsViewer: KPKContactStoreDelegate {
+    func kpkContactStore(contactStore: KPKContactStore, contactsAccessAuthorizationStatus status: KPKContactAuthorizationStatus) {
+        switch status {
+        case .Denied, .NotDetermined:
+            // You can display an alert to the user which can deep link on your app in the device's settings app.
+        //case other options are available:
+        default:
+            return
+        }
+    }
+}```
+
 Here's how you make a call for contacts retrieval. This will use a default regex phone number vaidator block
 
 ```Swift
