@@ -1,4 +1,4 @@
-# KPKContacts (1.1)
+# KPKContacts (v1.1.1)
 
 This package was originally created to solve a friend's problem. He found it difficult to access the iOS' contacts telephone numbers.
 
@@ -84,6 +84,13 @@ They contain 3 properties
     
     // The telephone number in string format
     let number: String
+```
+
+There is a helper method which allows you to access the first number for a contact:
+```Swift
+    contact.firstNumberAvailable()
+    // Rather than doing 
+    // contact.numbers.first?.number 
 ```
 ### To-dos
 + Simplify internal methods by using `.map`, and `.filter` methods
