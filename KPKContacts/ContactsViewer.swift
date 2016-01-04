@@ -26,7 +26,6 @@ class ContactsViewer: UITableViewController {
         }
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,16 +36,16 @@ class ContactsViewer: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let CellIdentifier: String = "cell"
+        let CellIdentifier: String = "ContactsCell"
         var cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as UITableViewCell!
         
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "CELL")
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
         }
         
         let contact: KPKContact = contacts[indexPath.row]
         cell.textLabel?.text = contact.firstName.uppercaseString
-        cell?.detailTextLabel?.text = contact.numbers.first?.number
+        cell?.detailTextLabel?.text = contact.firstNumberAvailable()
         return cell
     }
 }

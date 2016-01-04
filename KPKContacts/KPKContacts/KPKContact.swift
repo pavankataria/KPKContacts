@@ -26,6 +26,11 @@ public struct KPKContact {
         self.lastName = lastName
         self.numbers = numbers
     }
+    
+    func firstNumberAvailable() -> String{
+        //There will always be a number available
+        return self.numbers.first!.number
+    }
 }
 extension KPKContact: CustomStringConvertible{
     public var description: String {
