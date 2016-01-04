@@ -42,7 +42,8 @@ extension ContactsViewer: KPKContactStoreDelegate {
             return
         }
     }
-}```
+}
+```
 
 Here's how you make a call for contacts retrieval. This will use a default regex phone number vaidator block
 
