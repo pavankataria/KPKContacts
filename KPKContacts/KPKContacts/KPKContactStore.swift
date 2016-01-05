@@ -75,10 +75,10 @@ public class KPKContactStore: KPKContactStoreProtocol {
             let authorization = KPKContactAuthorizationStatus(withCNAuthStatus: cnAuthStatus)!
             notifyDelegateOnMainQueue(authorization)
             switch authorization {
-                case .Denied, .Restricted:
-                    print("The iOS contacts are not accessible. Register to KPKContact's contactsAccessAuthorizationStatus: delegate method to be notified of the contacts access authorization status and to take appropriate action.")
+            case .Denied, .Restricted:
+                print("The iOS contacts are not accessible. Register to KPKContact's contactsAccessAuthorizationStatus: delegate method to be notified of the contacts access authorization status and to take appropriate action.")
                 returnContactsOnMainQueue(nil)
-                default: break
+            default: break
             }
 
             let contacts = self.doContactNumberSearch()
@@ -124,18 +124,18 @@ public class KPKContactStore: KPKContactStoreProtocol {
         return nil
     }
 
-  private func getKPKNumbers(rawPhoneNumbers: [CNLabeledValue]) -> [KPKContactNumberInformation]? {
-    let numbers = rawPhoneNumbers
-      .filter { $0.value is CNPhoneNumber }
-      .map {
-        KPKContactNumberInformation(
-          identifier: $0.identifier,
-          displayType: CNLabeledValue.localizedStringForLabel($0.label),
-          number: ($0.value as? CNPhoneNumber)?.stringValue ?? "")
-    }
+    private func getKPKNumbers(rawPhoneNumbers: [CNLabeledValue]) -> [KPKContactNumberInformation]? {
+        let numbers = rawPhoneNumbers
+            .filter { $0.value is CNPhoneNumber }
+            .map {
+                KPKContactNumberInformation(
+                    identifier: $0.identifier,
+                    displayType: CNLabeledValue.localizedStringForLabel($0.label),
+                    number: ($0.value as? CNPhoneNumber)?.stringValue ?? "")
+        }
 
-    return !numbers.isEmpty ? numbers : nil
-  }
+        return !numbers.isEmpty ? numbers : nil
+    }
 }
 /*
 
