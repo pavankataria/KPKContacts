@@ -28,7 +28,7 @@ enum KPKContactAuthorizationStatus: Int{
     case Denied
     /*! The application is authorized to access contact data. */
     case Authorized
-    
+
     init?(withCNAuthStatus status: CNAuthorizationStatus){
         self.init(rawValue: status.rawValue)
     }
@@ -41,12 +41,12 @@ public class KPKContactStore: KPKContactStoreProtocol {
     internal func authorizationStatusForAccessingContacts() -> CNAuthorizationStatus {
         return CNContactStore.authorizationStatusForEntityType(CNEntityType.Contacts)
     }
-    
+
     // You can set your own regex phone number validator block if you prefer to change the default
     public func setRegexPhoneNumberValidatorBlock(block: String -> Bool){
         regexPhoneNumberValidatorBlock = block
     }
-    
+
     private var regexPhoneNumberValidatorBlock: String -> Bool = { value in
         let PHONE_REGEX = "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
@@ -55,7 +55,7 @@ public class KPKContactStore: KPKContactStoreProtocol {
     }
     /**
      Creates a process in the background to fetch contacts with valid phone numbers.
-     
+
      - parameter completionHandler:      The closure called when the Contact search is complete.
      */
     public func findContactsWithValidNumbersOnly(completionHandler complete: [KPKContact]? -> ()) {
@@ -70,26 +70,26 @@ public class KPKContactStore: KPKContactStoreProtocol {
                     self.delegate?.kpkContactStore(self, contactsAccessAuthorizationStatus: status)
                 }
             }
-            
+
             let cnAuthStatus = self.authorizationStatusForAccessingContacts()
             let authorization = KPKContactAuthorizationStatus(withCNAuthStatus: cnAuthStatus)!
             notifyDelegateOnMainQueue(authorization)
             switch authorization {
-                case .Denied, .Restricted:
-                    print("The iOS contacts are not accessible. Register to KPKContact's contactsAccessAuthorizationStatus: delegate method to be notified of the contacts access authorization status and to take appropriate action.")
+            case .Denied, .Restricted:
+                print("The iOS contacts are not accessible. Register to KPKContact's contactsAccessAuthorizationStatus: delegate method to be notified of the contacts access authorization status and to take appropriate action.")
                 returnContactsOnMainQueue(nil)
-                default: break
+            default: break
             }
-            
+
             let contacts = self.doContactNumberSearch()
-            
+
             if contacts.isEmpty {
                 returnContactsOnMainQueue(nil)
             }
             return returnContactsOnMainQueue(contacts)
         }
     }
-    
+
     private func doContactNumberSearch() -> [KPKContact] {
         var contacts = [KPKContact]()
         let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactPhoneNumbersKey]
@@ -97,9 +97,9 @@ public class KPKContactStore: KPKContactStoreProtocol {
         do {
             try self.store.enumerateContactsWithFetchRequest(fetchRequest, usingBlock: {
                 ( contact, pointer) -> Void in
-                
+
                 if let numbers = self.findValidPhoneNumbers(contact.phoneNumbers) {
-                    
+
                     let kpkContact = KPKContact(originalCNContact: contact, firstName: contact.givenName, lastName: contact.familyName , numbers: numbers)
                     contacts.append(kpkContact)
                 }
@@ -123,26 +123,19 @@ public class KPKContactStore: KPKContactStoreProtocol {
         }
         return nil
     }
-    
-    private func getKPKNumbers(rawPhoneNumbers: [CNLabeledValue]) -> [KPKContactNumberInformation]?{
-        // TODO: Use map and reduce function
-        var numbers = [KPKContactNumberInformation]()
-        for rawNumber in rawPhoneNumbers {
-            if let phoneNumber = rawNumber.value as? CNPhoneNumber {
-                let digits = phoneNumber.stringValue
-                let identifier = rawNumber.identifier
-                let displayLabel = CNLabeledValue.localizedStringForLabel(rawNumber.label)
-                let numberInformation = KPKContactNumberInformation(identifier: identifier, displayType: displayLabel, number: digits)
-                numbers.append(numberInformation)
-            }
+
+    private func getKPKNumbers(rawPhoneNumbers: [CNLabeledValue]) -> [KPKContactNumberInformation]? {
+        let numbers = rawPhoneNumbers
+            .filter { $0.value is CNPhoneNumber }
+            .map {
+                KPKContactNumberInformation(
+                    identifier: $0.identifier,
+                    displayType: CNLabeledValue.localizedStringForLabel($0.label),
+                    number: ($0.value as? CNPhoneNumber)?.stringValue ?? "")
         }
-        if numbers.isEmpty {
-            return nil
-        }
-        return numbers
+
+        return !numbers.isEmpty ? numbers : nil
     }
-    
-    
 }
 /*
 
